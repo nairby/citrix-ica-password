@@ -1,0 +1,22 @@
+Making a module:
+
+$modpath  = $env:PSModulePath.split(';')[0]
+$module   = $modpath + '\Citrix\Citrix.psm1'
+$manifest = $modpath + '\Citrix\Citrix.psd1'
+
+ni -path $module -itemtype file -force
+ise $module
+new-modulemanifest $manifest -rootmodule 'Citrix.psm1'
+
+[edit files]
+
+get-command -module Citrix
+
+
+
+todo:
+
+change functions to have approved verbs (or make it so that the warning
+doesn't appear). Could use a Convert[From|To] verb?
+
+Function to make ica files
